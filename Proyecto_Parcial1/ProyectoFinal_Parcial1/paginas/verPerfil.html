@@ -1,0 +1,64 @@
+<div style="background: url('sources/img/fondo3.jpg'); background-size: cover; min-height: 100vh;">
+<div class="container mt-5">
+  <div class="row">
+    <header class="text-center" style="height: 50px;"></header>
+  
+    <div class="col-12 col-md-6 mb-4 d-flex align-items-center justify-content-center">
+      <div class="w-100 text-center border rounded bg-light bg-opacity-50 p-3">
+        <h5 class="mb-3"><strong>Foto de Perfil</strong></h5>
+        <div style="width:100%; aspect-ratio: 4/3; background: #e9ecef; border-radius: 8px; display: flex; align-items: center; justify-content: center;">
+         <img id="foto_perfil" src="" alt="Foto de perfil"
+          style="width:100%; height:100%; object-fit:cover; border-radius:8px; display:none;">
+        </div>
+
+        
+      </div>
+    </div>
+    
+    <div class="col-12 col-md-6 mb-4">
+      <div class="border rounded bg-light bg-opacity-50 p-3">
+        <h5 class="mb-3 text-center"><strong>Datos del Perfil</strong></h5>
+        <table class="table table-bordered bg-light bg-opacity-75">
+          <tr>
+            <th>Nombre</th>
+            <td id="tbd_nombre"></td>
+          </tr>
+          <tr>
+            <th>Edad</th>
+            <td id="tbd_edad"></td>
+          </tr>
+          <tr>
+            <th>Departamento</th>
+            <td id="tbd_departamento"></td>
+          </tr>
+          <tr>
+            <th>Latitud</th>
+            <td id="latitud"></td>
+          </tr>
+          <tr>
+            <th>Longitud</th>
+            <td id="longitud"></td>
+          </tr>
+        </table>
+
+<div class="d-flex justify-content-center gap-2 mt-3">
+    <button class="btn btn-primary" onclick="cargarPaginas('index')">Aceptar</button>
+    <button class="btn btn-danger" onclick="eliminarUsuario()">Borrar</button>
+</div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
+<script>
+var usuario = localStorage.getItem('usuario');
+var user = JSON.parse(usuario);
+document.getElementById('tbd_nombre').innerHTML = user.nombre_usuario;
+document.getElementById('tbd_edad').innerHTML = user.edad_usuario;
+document.getElementById('tbd_departamento').innerHTML = user.departamento_usuario;
+document.getElementById('latitud').innerHTML = user.latitud_usuario;
+document.getElementById('longitud').innerHTML = user.longitud_usuario;
+
+
+</script>

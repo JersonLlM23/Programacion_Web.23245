@@ -1,0 +1,109 @@
+<style>
+    #map { height: 350px; }
+  </style>
+<div style="background: url('sources/img/fondo.jpg'); background-size: cover; min-height: 100vh;"> 
+  <header class="text-center" style="height: 30px;"></header>
+  <div class="container mt-5">
+    <form>
+    <div class="row">
+
+      <div class="col-12 col-md-4 mb-4">
+        <h3><strong>Crear Perfil</strong></h3>
+        <p> Por favor, llena el formulario. No te olvides de tomar una foto y colocar tu ubicación</p>
+        
+        <div class="py-2">
+         <label for="txt_nombre"><strong>Ingrese su nombre:</strong></label>
+         <input type="text" id="txt_nombre" name="txt_nombre" placeholder="Ingrese su nombre" autofocus class="form-control" required 
+        pattern="[A-Za-zÁÉÍÓÚáéíóúÑñ\s]+$">         
+        </div>
+
+        <div class="py-2">
+            <label for="txt_edad"><strong>Ingresa tu edad:</strong></label>
+            <input type="number" id="txt_edad" class="form-control" placeholder="Tu edad" min="17" max="65" required>
+          </div>
+          
+          <div class="py-2">
+           <label for="txt_departamento" class="form-label"> <strong>Ingresa el departamento:</strong></label>
+            <select name="txt_departamento" id="txt_departamento" class="form-select" required>
+                <option value="" disabled selected>Selecciona una opción</option>
+
+  <optgroup label="Región Costa">
+    <option value="Esmeraldas">Esmeraldas</option>
+    <option value="Manabí">Manabí</option>
+    <option value="Santa Elena">Santa Elena</option>
+    <option value="Guayas">Guayas</option>
+    <option value="Los Ríos">Los Ríos</option>
+    <option value="El Oro">El Oro</option>
+    <option value="Santo Domingo de los Tsáchilas">Santo Domingo de los Tsáchilas</option>
+  </optgroup>
+
+  <optgroup label="Región Sierra">
+    <option value="Imbabura">Imbabura</option>
+    <option value="Pichincha">Pichincha</option>
+    <option value="Cotopaxi">Cotopaxi</option>
+    <option value="Tungurahua">Tungurahua</option>
+    <option value="Bolívar">Bolívar</option>
+    <option value="Carchi">Carchi</option>
+    <option value="Chimborazo">Chimborazo</option>
+    <option value="Cañar">Cañar</option>
+    <option value="Napo">Napo</option>
+  </optgroup>
+
+  <optgroup label="Región Amazonía">
+    <option value="Pastaza">Pastaza</option>
+    <option value="Morona Santiago">Morona Santiago</option>
+    <option value="Sucumbíos">Sucumbíos</option>
+    <option value="Zamora-Chinchipe">Zamora-Chinchipe</option>
+    <option value="Orellana">Orellana</option>
+  </optgroup>
+
+  <optgroup label="Región Insular">
+    <option value="Galápagos">Galápagos</option>
+  </optgroup>
+</select>                     
+          </div>
+        
+      </div>
+ 
+      <div class="col-12 col-md-4 mb-4 d-flex align-items-center justify-content-center" style="min-height: 300px;">        
+        <div class="w-100 text-center border rounded bg-light bg-opacity-50 p-3">
+            <h5 class="mb-3"><strong>Tomar Foto:</strong></h5>
+          <video id="video" width="320" height="240" class="mb-2 rounded border w-100"
+       style="aspect-ratio: 4/3; max-width: 320px; object-fit: cover;" autoplay></video>
+          <br>
+          <button type="button" class="btn btn-sm btn-success mb-2" onclick="tomarFoto()">Tomar foto</button>
+          <br>
+          <canvas id="foto" width="320" height="240" class="border rounded w-100 mb-2"
+        style="aspect-ratio: 4/3; max-width: 320px;"></canvas>
+          <div class="d-flex justify-content-center gap-2">
+            <button type="button" class="btn btn-warning btn-sm" onclick="reintentarFoto()">Reintentar</button>
+          </div>
+        </div>
+      </div>
+ 
+    <div class="col-12 col-md-4 mb-4 d-flex flex-column align-items-center justify-content-center" style="min-height: 300px;">
+        <h5 class="mb-3 w-100 text-center"><strong>Obtener Ubicación:</strong></h5>
+    <div id="map" class="w-100 border rounded" style="height: 350px;"></div> <br>
+    
+    <div class="text-start">
+    <p><strong>Latitud:</strong></p>
+    <input type="text" id="latitud" class="form-control mb-2" placeholder="Latitud" readonly>
+    <p><strong>Longitud:</strong></p>    
+    <input type="text" id="longitud" class="form-control mb-2" placeholder="Longitud" readonly></div>
+    <div class="d-flex justify-content-center gap-2 w-100 mb-2">
+    <button type="button" id="btnObtenerUbicacion" class="btn btn-sm btn-primary" onclick="obtenerUbicacion()">Obtener Ubicación</button>
+    <button type="button" class="btn btn-warning btn-sm" onclick="reintentarUbicacion()">Reintentar</button>
+</div>
+  </div>
+  <div class="d-flex py-2">
+    <button type="submit" class="btn btn-warning w-100">Aceptar</button>
+  </div>
+  <div class="d-flex gap-2">
+    <button type="button" class="btn btn-primary w-100" onclick="guardarPerfil()">Guardar Perfil</button>
+  </div>
+
+    </div>
+  </div>
+
+</form>
+</div>
