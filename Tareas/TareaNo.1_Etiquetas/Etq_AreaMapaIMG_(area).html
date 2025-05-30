@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Etiqueta Area del mapa de Imagen.</title>
+</head>
+<body>
+    <h1>Etiqueta Área del mapa de Imagen.</h1>
+    <p> La etiqueta area se utiliza para definir áreas dentro de una imagen que pueden ser clicables. </p>
+    <p> Se utiliza en conjunto con la etiqueta map, que define el mapa de imagen. </p>
+    <p> La etiqueta area no es visible, pero permite crear enlaces en diferentes partes de una imagen. </p>
+    <p> Ejemplo: </p>
+    
+    <img src="https://i.pinimg.com/564x/14/a2/4d/14a24deca841f5997f3abb9cc3abce20.jpg" usemap="#Kai" alt="Kai" width="200">
+
+    <map name="Kai">
+      <area shape="rect" coords="524,524,16,17" href="https://ninjago.fandom.com/wiki/Kai"  target="_blank" alt="Kai, ninja de Fuego">
+    </map>
+    <p> Kai, ninja del Fuego</p>
+    <p> Pst: Al usar  target="_blank", permite abrir una nueva ventana.</p>
+</body>
+</html>

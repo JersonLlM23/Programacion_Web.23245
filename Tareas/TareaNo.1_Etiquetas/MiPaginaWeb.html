@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mi Pagina Web</title>
+</head>
+<body>
+    <h1> Bienvenido a mi página web </h1>
+    <img src="https://img.freepik.com/fotos-premium/sistema-solar-pegatina-png-medios-remezclados-fondo-transparente_53876-1035909.jpg?semt=ais_hybrid&w=740" usemap="#SistemaSolar" alt="Sistema Solar" width="200" style="float: right;">
+
+    <map name="SistemaSolar">
+      <area shape="rect" coords="524,524,16,17" href="https://www.nationalgeographicla.com/espacio/2022/10/que-es-el-sistema-solar-y-como-esta-compuesto"  target="_blank" alt="Sistema Solar">
+    </map>
+    <h1> La astronomía </h1>
+    <p> <b>ANTES DE CONTINUAR,</b> disfruta la lectura escuchando una música relajante:</p>
+    <audio controls>
+        <source src="StarlightAcoustic.mp3" type="audio/mpeg">
+    </audio>
+    <p> Música original por <cite> Jai Wolf </cite>.</p>
+
+    <h3> ¿Qué es la astronomía? </h3>
+    <p> La astronomía es la ciencia que estudia los cuerpos celestes y el universo en su conjunto. Se ocupa de la observación y análisis de planetas, estrellas, galaxias y otros fenómenos cósmicos.</p>
+    <p> La astronomía tiene una larga historia que se remonta a las antiguas civilizaciones, y ha evolucionado con el tiempo gracias a avances tecnológicos como telescopios y sondas espaciales.</p>
+
+    <p> Cita astronómica: </p>
+    <blockquote cite="https://es.wikipedia.org/wiki/Astronom%C3%ADa">"La astronomía es el estudio de los cuerpos celestes y del universo en su conjunto. Es una de las ciencias más antiguas y ha sido fundamental para la comprensión del cosmos."</blockquote>
+    <h1> El sistema Solar </h1>
+    <p> El sistema solar es un conjunto de cuerpos celestes que orbitan alrededor del Sol, incluyendo planetas, asteroides, cometas y otros objetos. Los planetas se dividen en dos grupos: los planetas terrestres (Mercurio, Venus, Tierra y Marte) y los planetas gigantes (Júpiter, Saturno, Urano y Neptuno).</p>
+    <p> El sistema solar se formó hace aproximadamente 4.6 mil millones de años a partir de una nube de gas y polvo cósmico. Desde entonces, ha sido objeto de estudio y exploración por parte de astrónomos y científicos.</p>
+
+    <label for="planeta">Elige un planeta:</label>
+    <input list="planetas" id="planeta" name="planeta" placeholder="Selecciona un planeta" required>
+    
+    <datalist id="planetas">
+    <option value="Mercurio">
+    <option value="Venus">
+    <option value="Tierra">
+    <option value="Marte">
+    <option value="Júpiter">
+    <option value="Saturno">
+    <option value="Urano">
+    <option value="Neptuno">
+    </datalist><br><br>
+
+
+    <table border="1">
+        <caption><b>Lista de planetas y su clasificación.</b></caption>
+        <colgroup>
+            <col style="background-color:lightblue;">
+            <col style="background-color:lightgray;">
+        </colgroup>
+        <tr>
+            <th>Planeta</th>
+            <th>Clasificación</th>
+        </tr>
+        <tr>
+            <td>Mercurio</td>
+            <td>Rocoso</td>
+          </tr>
+          <tr>
+            <td>Venus</td>
+            <td>Rocoso</td>
+          </tr>
+          <tr>
+              <td>Tierra</td>
+              <td>Rocoso</td>
+            </tr>
+            <tr>
+              <td>Marte</td>
+              <td>Rocoso</td>
+            </tr>
+            <tr>
+              <td>Júpiter</td>
+              <td>Gaseoso</td>
+            </tr>
+            <tr>
+              <td>Saturno</td>
+              <td>Gaseoso</td>
+            </tr>
+              <tr>
+                  <td>Urano</td>
+                  <td>Gaseoso</td>
+              </tr>
+              <tr>
+                  <td>Neptuno</td>
+                  <td>Gaseoso</td>
+        </tr>
+        </table>
+        <h1> Satélites Naturales</h1>
+        <p> Los satélites naturales son cuerpos celestes que orbitan alrededor de un planeta. En el sistema solar, la Tierra tiene un satélite natural conocido como Luna, mientras que otros planetas tienen múltiples lunas.</p>
+        <p> Los satélites naturales son importantes para el estudio de la formación y evolución de los planetas, así como para comprender la dinámica del sistema solar.</p>
+        <p> A continuación se muestra una lista de planetas y el número de satélites naturales que poseen:</p>
+
+    <table border="1">
+        <caption><b>Lista de planetas y sus lunas</b></caption>
+        <tr>
+          <th>Planeta</th>
+          <th>Número de Satélites</th>
+        </tr>
+        <tr>
+          <td>Mercurio</td>
+          <td>0</td>
+        </tr>
+        <tr>
+          <td>Venus</td>
+          <td>0</td>
+        </tr>
+        <tr>
+            <td>Tierra</td>
+            <td>1</td>
+          </tr>
+          <tr>
+            <td>Marte</td>
+            <td>2</td>
+          </tr>
+          <tr>
+            <td>Júpiter</td>
+            <td>95</td>
+          </tr>
+          <tr>
+            <td>Saturno</td>
+            <td>274</td>
+          </tr>
+            <tr>
+                <td>Urano</td>
+                <td>27</td>
+            </tr>
+            <tr>
+                <td>Neptuno</td>
+                <td>14</td>
+      </table><br><br>
+
+      <details>
+        <summary>¿Y Plutón?</summary>
+        <p>Desde 2006, Plutón es considerado un planeta enano, no entra en esta categoria.</p>
+      </details><br><br>
+    
+
+      <label for="planetafav">¿Cuál es tu planeta favorito?:</label>
+      <input type="text" id="planetafav" name="planetafav"> <br><br>
+      
+      <h1> Agenda eventos astronómicos 2025 </h1>
+      <object data="Agenda2025.pdf" type="application/pdf" width="700" height="500">
+        <p>Tu navegador no puede mostrar el PDF. <a href="Agenda2025.pdf">Descargar PDF</a></p>
+      </object>
+       
+      
+      <h2>Datos Curiosos del Espacio:</h2>
+      <iframe width="560" height="315" 
+        src="https://www.youtube.com/embed/XDcS623yVC8" 
+        title="YouTube video player" 
+        frameborder="0" 
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+        allowfullscreen>
+      </iframe>
+      <p> Video original por el canal:<cite> GENIAL </cite>.</p>
+        
+
+    <article>
+        <h2>Noticia No.1 </h2>
+        <p>Encontraron un nuevo tesoro de galaxias que podría ayudar a revelar secretos del universo </p>
+      </article>
+      
+    <aside>
+        <h4> Artículos relacionados: </h4>
+        <ul>
+            <l1><a href="https://www.nationalgeographic.com.es/ciencia/5-planetas-enanos-sistema-solar-que-les-diferencia-resto_18447S">Planetas Enanos en nustro Sistema Solar</a></l1>
+        </ul>
+    </aside>
+
+    <h2> Información de Empresarial:</h2>
+    <p> Nuestro correo electrónico <a href="jsllumiquinga1@espe.edu.ec"> Correo Empresarial </a> </p>
+    <p> Visita nuestra página <a href="http://miespe.espe.edu.ec/"> Mi ESPE</a> </p>
+    <p> Visítanos en la siguiente ubicación: <a href="https://maps.app.goo.gl/mexaUaoARnPtznY39"> Dirección </a></p>
+
+    <h1> Sobre mi: </h1>
+    <p> Soy estudiante de la <b>Universiad de las Fuerzas Armadas - ESPE</b>, me gradué en el colegio <abbr title="Institución Educativa Básica Y Superior Amazónica">IEBYSA</abbr> </p>
+    <p> Estoy aprendiendo a crear páginas web con HTML, no olvides de hacer tu <code>push()</code> en git </p> 
+    <h3> Contáctame a través de:</h3>
+    <adress> 
+        <p> Correo: <a href="jersonstv_2302@hotmail.com"=>Correo personal</a></p>
+        <p> Celular: <a href = "0980460057"> Celular </a></p>
+    </adress>
+
+    <data value="astronomia">Astronomia</data>
+
+    <h2> ¿Quieres saber más?, haz clic aquí</h2>
+    <button onclick="window.open('https://www.nationalgeographic.es/tema/contenido/ciencia/espacio/astronomia', '_blank')">Ir a National Geographic </button>
+
+    
+    <h2>Haz clic para recibir un saludo</h2>
+    <button onclick="alert('HOLA, NUNCA TE RINDAS')">Mostrar</button>
+
+    <h2>Ir siguiente página (aunque no haya)</h2>
+    <object data="boton.html" type="text/html" width="200" height="100"></object>
+
+</body>
+</html>
