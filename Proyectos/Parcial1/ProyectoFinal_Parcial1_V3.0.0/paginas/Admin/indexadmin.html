@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Panel de Administración</title>
+  <!-- Enlaces a Bootstrap CSS y otros estilos -->
+  <link href="../../public/bootstrap-5.3.5-dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+<div class="text-center text-white bg-dark">
+  <div style="background-image: url('./sources/img/paisaje2.jpg'); background-size: cover; background-position: center; height: 300px; display: flex; align-items: center; justify-content: center">
+    <div class="text-center text-white">
+      <h1><strong>Panel de Administración</strong></h1>
+      <h5>Bienvenido, Administrador</h5>
+    </div>
+  </div>
+
+  <header class="text-center" style="height: 30px;"></header>
+  <div class="container">
+    <div class="row">
+      <div class="col-12 col-md-2 mb-4">
+        <div>
+          <img src="./sources/img/perfil.png" alt="No hay imagen" width="200" height="200">
+          <h4>Admin <span class="badge bg-danger">Administrador</span></h4><br><br>
+        </div>
+        <h6 class="text-white">Consejos para Administradores</h6>
+        <ul class="text-white small text-start">
+          <li>Supervisa la actividad de los usuarios regularmente.</li>
+          <li>Gestiona los perfiles y estados de ánimo reportados.</li>
+          <li>Promueve el buen uso de la plataforma.</li>
+          <li>Responde a las dudas y sugerencias de los estudiantes.</li>
+          <li>Mantén la información actualizada.</li>
+        </ul>
+      </div>
+      <div class="col-12 col-md-8 mb-4">
+        <article>
+          <section>
+            <h3><strong>Gestión de la Plataforma</strong></h3>
+            <p>Desde este panel puedes supervisar y administrar los perfiles de los estudiantes, revisar sus estados de ánimo y comentarios, y mantener la comunidad activa y segura.</p>
+            <p>Utiliza las herramientas de administración para editar, eliminar o revisar perfiles y actividades.</p>
+            <br>
+            <picture>
+              <img src="./sources/img/icon.png" alt="Icono" width="200" height="200">
+            </picture>
+            <header style="height: 300px;"></header>
+            <section class="pt-3" id="alert">
+              <div class="alert alert-info alert-dismissible fade show text-center" role="alert">
+                ¿Sabías que puedes ver estadísticas de uso y actividad de los estudiantes?
+                <a class="alert-link" href="https://github.com/JersonLlM23/Programacion_Web.23245" target="_blank" rel="noopener">¡Descubre más en el repositorio!</a>
+                <p>En el repositorio encontrarás recursos y documentación para administradores.</p>
+                <button aria-label="Close" class="btn-close" data-bs-dismiss="alert" type="button"></button>
+              </div>
+            </section>
+            <h4><strong>Desarrollado por: Jerson Llumiquinga M., estudiante de Software</strong></h4>
+            <h5><p>¿Tienes sugerencias para mejorar la plataforma?</p></h5>
+            <div class="text-start">
+              Puedes contactar al desarrollador para reportar errores o proponer nuevas funciones para la administración.
+            </div>
+            <strong>Herramientas de administración:</strong>
+            <p>
+              <span class="badge bg-warning">Gestión de usuarios</span>
+              <span class="badge bg-secondary">Revisión de reportes</span>
+              <span class="badge bg-info text-dark">Estadísticas</span>
+              <span class="badge bg-success text-dark">Configuración</span>
+            </p>
+          </section>
+        </article>
+      </div>
+
+      <div class="col-12 col-md-2 mb-4">
+        <aside>
+          <h5>Recursos para Administradores</h5>
+          <p>Consulta la documentación oficial de la plataforma y aprende a sacar el máximo provecho de las herramientas de gestión.</p>
+          <a href="https://developer.mozilla.org/es/docs/Web/HTML" target="_blank" rel="noopener">Ver más</a><br>
+        </aside><br><br>
+        <div class="alert alert-warning" role="alert">
+          Recuerda revisar los reportes de actividad y mantener la plataforma segura.
+        </div>
+        <a href="/paginas/Login/login.html" class="btn btn-outline-success me-2">Cerrar sesión</a>
+      </div>
+    </div>
+    <br>
+  </div>
+</div>
+<script src="../../public/bootstrap-5.3.5-dist/js/bootstrap.min.js"></script>
+<script src="public/js/mostrarPerfilesAdmin.js"></script>
+<script src="public/js/cargarMenuAdmin.js"></script>
+</body>
+</html>
+

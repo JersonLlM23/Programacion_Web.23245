@@ -1,0 +1,175 @@
+<style>
+      body {
+        background: url('sources/img/fondoperfiles.jpg') no-repeat center center fixed;
+        background-size: cover;
+      }
+    </style>
+</head>
+<body>
+<div class="container py-5">
+  <h2 class="mb-4 text-center">Registro de Actividades</h2>
+  <div class="table-responsive">
+    <table class="table table-bordered table-hover align-middle">
+      <thead class="table-dark">
+        <tr>
+          <th>Estado Ánimo</th>
+          <th>Nombre</th>
+          <th>Edad</th>
+          <th>Género</th>
+          <th>Acciones</th>
+          <th>Mapa</th>
+          <th>Eliminar</th>
+        </tr>
+      </thead>
+      <tbody id="tablaUsuarios">
+        <!-- Las filas se llenan con JS -->
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<!-- Modal para ver el día -->
+<div class="modal fade" id="modalVerDia" tabindex="-1" aria-labelledby="modalVerDiaLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+    <div class="modal-content">
+      <div class="modal-header bg-info text-white">
+        <h5 class="modal-title" id="modalVerDiaLabel">Mi día</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+      </div>
+      <div class="modal-body text-center" id="modalVerDiaBody">
+        <!-- Aquí se cargará la foto y el mensaje -->
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-info w-100" data-bs-dismiss="modal">Cerrar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal de confirmación para eliminar -->
+<div class="modal fade" id="modalConfirmarEliminar" tabindex="-1" aria-labelledby="modalConfirmarEliminarLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header bg-danger text-white">
+        <h5 class="modal-title" id="modalConfirmarEliminarLabel">Confirmar eliminación</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+      </div>
+      <div class="modal-body text-center">
+        ¿Seguro que deseas eliminar este estado?
+      </div>
+      <div class="modal-footer">
+         <button type="button" class="btn btn-danger" id="btnConfirmarEliminar">Sí</button>
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">No</button>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+let indexAEliminar = null;
+
+window.eliminarUsuario = function(index) {
+  indexAEliminar = index;
+  var modal = new bootstrap.Modal(document.getElementById('modalConfirmarEliminar'));
+  modal.show();
+}
+
+function asociarEventoEliminar() {
+  const btn = document.getElementById('btnConfirmarEliminar');
+  if (btn) {
+    btn.onclick = function() {
+      if (indexAEliminar !== null) {
+        var usuarios = JSON.parse(localStorage.getItem('usuarios')) || [];
+        usuarios.splice(indexAEliminar, 1);
+        localStorage.setItem('usuarios', JSON.stringify(usuarios));
+        mostrarUsuarios();
+        indexAEliminar = null;
+        // Cierra el modal
+        var modal = bootstrap.Modal.getInstance(document.getElementById('modalConfirmarEliminar'));
+        if (modal) modal.hide();
+      }
+    }
+  }
+}
+
+// Llama a la función después de mostrarUsuarios
+window.mostrarUsuarios = function() {
+  var usuarios = JSON.parse(localStorage.getItem('usuarios')) || [];
+  var tbody = document.getElementById('tablaUsuarios');
+  tbody.innerHTML = '';
+  usuarios.forEach(function(user, i) {
+    // Estado de ánimo
+    var estadoHtml = user.estado_animo
+      ? `<span class="badge bg-secondary fs-6">${user.estado_animo}</span>`
+      : '<span class="text-muted">Sin estado</span>';
+    // Edad (calculada)
+    var edad = user.edad_usuario ? user.edad_usuario : '';
+    // Género
+    var genero = user.genero_usuario ? user.genero_usuario : '';
+    // Nombre
+    var nombre = user.nombre_usuario ? user.nombre_usuario : '';
+
+    var tr = document.createElement('tr');
+    tr.innerHTML = `
+      <td>${estadoHtml}</td>
+      <td>${nombre}</td>
+      <td>${edad}</td>
+      <td>${genero}</td>
+      <td>
+        <button class="btn btn-info btn-sm" onclick="verDiaModal(${i})">Ver día</button>
+      </td>
+      <td>
+        <button class="btn btn-sm btn-primary" onclick="window.open('https://www.google.com/maps?q=${user.latitud_usuario},${user.longitud_usuario}', '_blank')">
+          Ver en el mapa
+        </button>
+      </td>
+      <td>
+        <button class="btn btn-danger" onclick="eliminarUsuario(${i})">Eliminar</button>
+      </td>
+    `;
+    tbody.appendChild(tr);
+  });
+  asociarEventoEliminar(); // <-- ¡AQUÍ!
+}
+
+window.verDiaModal = function(index) {
+  var usuarios = JSON.parse(localStorage.getItem('usuarios')) || [];
+  var user = usuarios[index];
+
+  // Foto
+  var fotoHtml = user.foto_usuario
+    ? `<img src="${user.foto_usuario}" alt="Foto del día" class="img-fluid rounded mb-3" style="max-height:300px;">`
+    : '<div class="text-muted mb-2">Sin foto</div>';
+
+  // Estado de ánimo (opcional)
+  var estadoHtml = user.estado_animo
+    ? `<div class="mb-2"><span class="badge bg-secondary fs-5">${user.estado_animo}</span></div>`
+    : '';
+
+  // Comentario
+  var comentarioHtml = user.comentario_dia
+    ? `<p class="mb-0">${user.comentario_dia}</p>`
+    : '<div class="text-muted">Sin comentario</div>';
+
+  // Fecha del comentario
+  var fechaComentario = user.comentario_fecha
+    ? `<div class="text-muted" style="font-size:0.9em;">${new Date(user.comentario_fecha).toLocaleString('es-EC')}</div>`
+    : '';
+
+  document.getElementById('modalVerDiaBody').innerHTML = `
+    ${fotoHtml}
+    ${estadoHtml}
+    ${comentarioHtml}
+    ${fechaComentario}
+  `;
+
+  var modal = new bootstrap.Modal(document.getElementById('modalVerDia'));
+  modal.show();
+}
+
+// Llama a la función al cargar la vista
+mostrarUsuarios();
+</script>
+</body>
+</html>

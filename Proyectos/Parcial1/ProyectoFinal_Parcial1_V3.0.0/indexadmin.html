@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href="sources/assets/img/icono4.png">
+    <link rel="stylesheet" href="public/bootstrap-5.3.5-dist/css/bootstrap.min.css">
+    <title>Panel Admin | Mi Perfil Estudiantil</title>
+
+</head>
+<body>
+  <section id="menuadmin"></section>
+  <main id="contenidoadmin"></main>
+
+  <!-- Modal de usuario (rojo) -->
+  <div class="modal fade" id="usuarioModal" tabindex="-1" aria-labelledby="usuarioModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header bg-danger text-white">
+          <h5 class="modal-title text-center" id="usuarioModalLabel">Eres admin</h5>
+        </div>
+        <div class="modal-body">
+          ¡Bienvenido! Has ingresado como admin.
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-danger w-100" data-bs-dismiss="modal">Aceptar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="./public/bootstrap-5.3.5-dist/js/bootstrap.min.js"></script>
+  
+  <script src="./public/js/cargarMenuAdmin.js"></script>
+  <script src="./public/js/contacto.js"></script>
+  <script src="public/js/mostrarPerfilesAdmin.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      var modal = new bootstrap.Modal(document.getElementById('usuarioModal'));
+      modal.show();
+    });
+  </script>
+</body>
+</html>

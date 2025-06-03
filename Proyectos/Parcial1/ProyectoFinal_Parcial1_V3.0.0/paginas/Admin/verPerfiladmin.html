@@ -1,0 +1,61 @@
+<div style="background: url('sources/img/fondo50.jpg'); background-size: cover; min-height: 100vh;">
+  <div class="container py-5">
+    <h2 class="mb-4 text-center">Perfiles de Usuarios</h2>
+    <div class="table-responsive">
+      <table class="table table-bordered table-hover align-middle" id="tablaPerfilesAdmin">
+        <thead class="table-dark">
+          <tr>
+            <th>Nombre</th>
+            <th>Edad</th>
+            <th>Departamento</th>
+            <th>Género</th>
+            <th>Ver Datos</th>
+            <th>Eliminar</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- Filas generadas por JS -->
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- Modal para ver todos los datos -->
+  <div class="modal fade" id="modalVerDatosPerfil" tabindex="-1" aria-labelledby="modalVerDatosPerfilLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+      <div class="modal-content">
+        <div class="modal-header bg-info text-white">
+          <h5 class="modal-title" id="modalVerDatosPerfilLabel">Datos completos del usuario</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+        </div>
+        <div class="modal-body" id="modalVerDatosPerfilBody">
+          <!-- Aquí se mostrarán los datos completos -->
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-info w-100" data-bs-dismiss="modal">Cerrar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal de confirmación para eliminar perfil -->
+  <div class="modal fade" id="modalConfirmarEliminarPerfilAdmin" tabindex="-1" aria-labelledby="modalConfirmarEliminarPerfilAdminLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header bg-danger text-white">
+          <h5 class="modal-title" id="modalConfirmarEliminarPerfilAdminLabel">Confirmar eliminación</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+        </div>
+        <div class="modal-body text-center">
+          ¿Estás seguro de que deseas borrar este perfil?
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-danger" id="btnConfirmarEliminarPerfilAdmin">Sí</button>
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">No</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+

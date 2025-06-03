@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="description" content="Mi Perfil Estudiantil" />
+    <meta name="author" content="Jerson Llumiquinga" />
+    <link rel="icon" type="image/png" href="sources/assets/img/icono3.png">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700" rel="stylesheet" />
+    <link rel="stylesheet" href="./public/bootstrap-5.3.5-dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+        integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin=""/>
+    <link href="./public/css/styles.css" rel="stylesheet" />
+    <title>MyDailyFace</title>
+</head>
+<body>
+    <!-- Menú SPA -->
+    <section id="menu"></section>
+    <!-- Contenido SPA -->
+    <main id="contenido"></main>
+
+    <!-- Modal de usuario -->
+    <div class="modal fade" id="usuarioModal" tabindex="-1" aria-labelledby="usuarioModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered"> 
+            <div class="modal-content">
+                <div class="modal-header bg-primary text-white">
+                    <h5 class="modal-title text-center" id="usuarioModalLabel">Eres usuario</h5>
+                </div>
+                <div class="modal-body">
+                    ¡Bienvenido! Has ingresado como usuario.
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary w-100" data-bs-dismiss="modal">Aceptar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="./public/bootstrap-5.3.5-dist/js/bootstrap.min.js"></script>    
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script src="./public/js/guardardatos.js"></script>
+    <script src="./public/js/cargarMenu.js"></script>
+    <script src="./public/js/cameraAPI.js"></script>
+    <script src="./public/js/localizacionAPI.js"></script>
+    <script src="./public/js/mostrarperfil.js"></script>
+    <script src="./public/js/mostrarUsuarios.js"></script>
+    <script src="./public/js/scripts.js"></script>
+    <script src="./public/js/validaciones.js"></script>
+    <script src="./public/js/contacto.js"></script>
+    <script>
+      document.addEventListener('DOMContentLoaded', function() {
+        var modal = new bootstrap.Modal(document.getElementById('usuarioModal'));
+        modal.show();
+      });
+    </script>
+</body>
+</html>

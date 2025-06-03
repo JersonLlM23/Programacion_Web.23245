@@ -1,0 +1,133 @@
+<style>
+    #map { height: 350px; }
+  </style>
+<div style="background: url('sources/img/fondo.jpg'); background-size: cover; min-height: 100vh;"> 
+  <header class="text-center" style="height: 30px;"></header>
+  <div class="container mt-5">
+    <div id="erroresForm">
+    <form id="formPerfil" autocomplete="off">
+  <div class="row">
+    <!-- Columna 1 -->
+    <div class="col-12 col-md-4 mb-4">
+      <h3><strong>Crear Perfil</strong></h3>
+      <p>Llena tus datos personales</p>
+      <div class="py-2">
+        <label for="txt_nombre"><strong>Nombre:</strong></label>
+        <input type="text" id="txt_nombre" name="txt_nombre" class="form-control" placeholder="Nombre" required pattern="[A-Za-zÁÉÍÓÚáéíóúÑñ\s]+$" title="Solo letras y espacios">
+      </div>
+      <div class="py-2">
+        <label for="txt_apellido"><strong>Apellido:</strong></label>
+        <input type="text" id="txt_apellido" name="txt_apellido" class="form-control" placeholder="Apellido" required pattern="[A-Za-zÁÉÍÓÚáéíóúÑñ\s]+$" title="Solo letras y espacios">
+      </div>
+
+      <div class="py-2">
+        <label for="txt_cedula"><strong>Cédula:</strong></label>
+        <input type="text" id="txt_cedula" name="txt_cedula" class="form-control" placeholder="Cédula Ecuatoriana" required pattern="\d{10}" title="Debe tener 10 dígitos">
+      </div>
+      <div class="py-2">
+        <label for="txt_iduni"><strong>ID Universidad:</strong></label>
+        <input type="text" id="txt_iduni" name="txt_iduni" class="form-control" placeholder="Ej: 2023123456" required>
+      </div>
+      <div class="py-2">
+        <label for="txt_nacimiento"><strong>Fecha de nacimiento:</strong></label>
+        <input type="date" id="txt_nacimiento" class="form-control" required onchange="calcularEdad()">
+        <span id="edadCalculada" class="badge bg-info text-dark ms-2"></span>
+      </div>
+    </div>
+    <!-- Columna 2 -->
+    <div class="col-12 col-md-4 mb-4">
+      <h3 class="invisible">.</h3>
+      <p>Datos académicos y contacto</p>
+      <div class="py-2">
+        <label for="txt_genero"><strong>Género:</strong></label>
+        <select id="txt_genero" class="form-select" required>
+          <option value="" disabled selected>Selecciona una opción</option>
+          <option value="Masculino">Masculino</option>
+          <option value="Femenino">Femenino</option>
+          <option value="Otro">Otro</option>
+        </select>
+      </div>
+      <div class="py-2">
+        <label for="txt_email"><strong>Correo electrónico:</strong></label>
+        <input type="email" id="txt_email" class="form-control" required placeholder="Ej: jerson@hotmail.es">
+      </div>
+      <div class="py-2">
+        <label for="txt_telefono"><strong>Teléfono:</strong></label>
+        <input type="tel" id="txt_telefono" class="form-control" required pattern="\d{10}" placeholder="Ej:0990222222" title="Debe tener 10 dígitos">
+      </div>
+      <div class="py-2">
+        <label for="txt_departamento" class="form-label"><strong>Departamento:</strong></label>
+        <select name="txt_departamento" id="txt_departamento" class="form-select" required>
+          <option value="" disabled selected>Selecciona una opción</option>
+          <option value="Ciencias de la Energía y Mecánica">Ciencias de la Energía y Mecánica</option>
+          <option value="Ciencias de la Computación">Ciencias de la Computación</option>
+          <option value="Eléctrica , Electrónica y Telecomunicaciones">Eléctrica , Electrónica y Telecomunicaciones</option>
+          <option value="Ciencias de la Vida y de la Agricultura">Ciencias de la Vida y de la Agricultura</option>
+          <option value="Ciencias Administrativas, Económicas y de Comercio">Ciencias Administrativas, Económicas y de Comercio</option>
+          <option value="Ciencias de la Tierra y Construcción">Ciencias de la Tierra y Construcción</option>
+          <option value="Ciencias Médicas">Ciencias Médicas</option>
+          <option value="Ciencias Humanas y Sociales">Ciencias Humanas y Sociales</option>
+          <option value="Seguridad y Defensa">Seguridad y Defensa</option>
+        </select>
+      </div>
+      <div class="py-2">
+        <label for="txt_semestre"><strong>Semestre o nivel:</strong></label>
+        <select id="txt_semestre" class="form-select" required>
+          <option value="" disabled selected>Selecciona un semestre</option>
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+          <option value="4">4</option>
+          <option value="5">5</option>
+          <option value="6">6</option>
+          <option value="7">7</option>
+          <option value="8">8</option>
+        </select>
+      </div>
+      <div class="form-check py-2">
+        <input class="form-check-input" type="checkbox" id="disponible_proyectos" required>
+        <label class="form-check-label" for="disponible_proyectos">
+          ¿Aceptas nuestros términos y condiciones?
+        </label>
+      </div>
+    </div>
+    <!-- Columna 3 -->
+    <div class="col-12 col-md-4 mb-4 d-flex flex-column align-items-center justify-content-center" style="min-height: 300px;">
+      <h5 class="mb-3 w-100 text-center"><strong>Obtener Ubicación:</strong></h5>
+      <div id="map" class="w-100 border rounded" style="height: 350px;"></div> <br>
+      <div class="text-start w-100">
+        <label for="latitud"><strong>Latitud:</strong></label>
+        <input type="text" id="latitud" class="form-control mb-2" placeholder="Latitud" readonly required>
+        <label for="longitud"><strong>Longitud:</strong></label>
+        <input type="text" id="longitud" class="form-control mb-2" placeholder="Longitud" readonly required>
+      </div>
+      <div class="d-flex justify-content-center gap-2 w-100 mb-2">
+        <button type="button" id="btnObtenerUbicacion" class="btn btn-sm btn-primary" onclick="obtenerUbicacion()">Obtener Ubicación</button>
+        <button type="button" class="btn btn-warning btn-sm" onclick="reintentarUbicacion()">Reintentar</button>
+      </div>
+      <div class="d-flex gap-2 w-100">
+        <button type="button" class="btn btn-primary w-100" onclick="validarFormularioCrearPerfil()">Guardar Perfil</button>
+      </div>
+    </div>
+  </div>
+</form>
+</div>
+</div>
+
+<!-- Modal de error de validación -->
+<div class="modal fade" id="modalErroresPerfil" tabindex="-1" aria-labelledby="modalErroresPerfilLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header bg-danger text-white">
+        <h5 class="modal-title" id="modalErroresPerfilLabel">Errores en el formulario</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+      </div>
+      <div class="modal-body" id="listaErroresPerfil">
+        <!-- Aquí se mostrarán los errores -->
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Aceptar</button>
+      </div>
+    </div>
+  </div>
+</div>

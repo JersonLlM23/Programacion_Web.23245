@@ -1,0 +1,286 @@
+<div style="background: url('sources/img/fondo3.jpg'); background-size: cover; min-height: 100vh;">
+  <header style="height: 60px;"> </header>
+  <div class="container">
+    <!-- Encima del container de "Tus datos:" -->
+
+    <div class="row">
+                   <h3> <strong> Fecha y Hora Actual</strong> </h3>
+         <div id="fechaHoraPerfil" class="text-center mb-2 fw-bold"></div>
+      <div class="col-4 col-md-6 mb-4 d-flex align-items-center justify-content-center">
+        <div class="w-100 text-center border rounded bg-light bg-opacity-50 p-3">
+          <h5 class="mb-3"><strong>Tus datos:</strong></h5>
+          <table class="table table-bordered bg-light bg-opacity-75">
+            <tr>
+              <th>Nombre</th>
+              <td id="tbd_nombre"></td>
+            </tr>
+            <tr>
+              <th>Edad</th>
+              <td id="tbd_edad"></td>
+            </tr>
+            <tr>
+              <th>Departamento</th>
+              <td id="tbd_departamento"></td>
+            </tr>
+            <tr>
+              <th>Semestre</th>
+              <td id="tbd_semestre"></td>
+            </tr>
+            <tr>
+              <th>Género</th>
+              <td id="tbd_genero"></td>
+            </tr>
+          </table>
+
+        </div>
+      </div>
+
+
+
+      <!-- Foto de Perfil y Cámara fusionados -->
+      <div class="col-12 col-md-6 mb-4 d-flex align-items-center justify-content-center">
+        <div class="w-100 text-center border rounded bg-light bg-opacity-50 p-3" style="height: 100%;">
+          <h5 class="mb-3"><strong>Tú foto del Día</strong></h5>
+          <div class="foto-area" style="width:100%; aspect-ratio: 4/3; background: #e9ecef; border-radius: 8px; overflow: hidden; margin-bottom: 1rem; position: relative;">
+            <img id="foto_perfil" src="" alt="Foto de perfil"
+              style="position:absolute; top:0; left:0; width:100%; height:100%; object-fit:cover; border-radius:8px; display:none;">
+            <video id="video" width="400" height="300"
+              style="position:absolute; top:0; left:0; width:100%; height:100%; object-fit:cover; border-radius:8px; display:none;" autoplay></video>
+            <canvas id="foto" width="400" height="300"
+              style="position:absolute; top:0; left:0; width:100%; height:100%; object-fit:cover; border-radius:8px; display:none;"></canvas>
+          </div>
+          <div class="d-flex justify-content-center gap-2 flex-wrap">
+            <button type="button" class="btn btn-info mb-2" onclick="iniciarCamara()">Iniciar cámara</button>
+            <button type="button" class="btn btn-success mb-2" onclick="tomarFoto()">Tomar foto</button>
+            <button type="button" class="btn btn-danger mb-2" onclick="reintentarFoto()">Reintentar</button>
+          </div>
+          
+        </div>
+      </div>
+      
+      
+
+    </div>
+
+
+
+
+    <div class="row">
+      <div class="col-8">
+        <div class="w-100 text-center border rounded bg-light bg-opacity-50 p-3">
+          <h5 class="mb-3"><strong>Comentarios del Día</strong></h5>
+          <div class="mb-3">
+            <label for="comentarioDia" class="form-label"><strong>¿Cómo estuvo tu día?</strong></label>
+            <textarea class="form-control" id="comentarioDia" rows="3" placeholder="Escribe aquí tu comentario..."></textarea>
+          </div>
+          </div>
+      </div>
+
+             
+      <div class="col-4 col-md-4 mb-4 d-flex align-items-center justify-content-center">
+        <div class="w-100 text-center border rounded bg-light bg-opacity-50 p-3">
+          <h5 class="mb-3"><strong>Estado de Ánimo</strong></h5>
+          <div class="mb-3">
+            <label for="estadoAnimo" class="form-label"><strong>¿Cómo te sientes hoy?</strong></label>
+            <select class="form-select" id="estadoAnimo">
+              <option value="" disabled selected>Selecciona tu estado de ánimo</option>
+              <option value="Feliz">😊 Feliz</option>
+              <option value="Triste">😢 Triste</option>
+              <option value="Preocupado">😟 Preocupado</option>
+              <option value="Enojado">😠 Enojado</option>
+              <option value="Serio">😐 Serio</option>
+              <option value="Motivado">💪 Motivado</option>
+              <option value="Cansado">😴 Cansado</option>
+              <option value="Emocionado">🤩 Emocionado</option>
+            </select>
+          </div>
+         </div>
+      </div>  
+
+    </div>
+
+    <button class="btn btn-success w-100 my-3" onclick="validarYGuardarTodoPerfil()">Guardar Todo</button>
+
+  </div>
+</div>
+
+<!-- Modal de confirmación para eliminar usuario -->
+<div class="modal fade" id="modalConfirmarEliminarPerfil" tabindex="-1" aria-labelledby="modalConfirmarEliminarPerfilLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header bg-danger text-white">
+        <h5 class="modal-title" id="modalConfirmarEliminarPerfilLabel">Confirmar eliminación</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+      </div>
+      <div class="modal-body text-center">
+        ¿Seguro que deseas eliminar tu perfil?
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">No</button>
+        <button type="button" class="btn btn-danger" id="btnConfirmarEliminarPerfil">Sí</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+var usuario = localStorage.getItem('usuario');
+if (!usuario) {
+  var usuarios = JSON.parse(localStorage.getItem('usuarios')) || [];
+  if (usuarios.length > 0) {
+    usuario = JSON.stringify(usuarios[usuarios.length - 1]);
+    localStorage.setItem('usuario', usuario);
+  }
+}
+if (usuario) {
+  var user = JSON.parse(usuario);
+  document.getElementById('tbd_nombre').innerHTML = user.nombre_usuario;
+  document.getElementById('tbd_edad').innerHTML = user.edad_usuario;
+  document.getElementById('tbd_departamento').innerHTML = user.departamento_usuario;
+  document.getElementById('tbd_semestre').innerHTML = user.semestre_usuario;
+  document.getElementById('tbd_genero').innerHTML = user.genero_usuario;
+  if (user.estado_animo) {
+    document.getElementById('estadoAnimo').value = user.estado_animo;
+  }
+}
+
+// Mostrar modal de éxito si viene de registro
+document.addEventListener("DOMContentLoaded", function() {
+    if (sessionStorage.getItem('perfilRecienCreado')) {
+        if (typeof mostrarModalPerfil === "function") {
+            mostrarModalPerfil("¡Registro exitoso!", "¡Tu perfil fue creado correctamente!");
+        }
+        sessionStorage.removeItem('perfilRecienCreado');
+    }
+});
+
+// Haz la función global
+window.eliminarUsuario = function() {
+  console.log('Función eliminarUsuario llamada');
+  var usuario = localStorage.getItem('usuario');
+  if (usuario) {
+    var user = JSON.parse(usuario);
+    var usuarios = JSON.parse(localStorage.getItem('usuarios')) || [];
+    var index = usuarios.findIndex(u =>
+      u.nombre_usuario === user.nombre_usuario &&
+      u.departamento_usuario === user.departamento_usuario &&
+      u.latitud_usuario === user.latitud_usuario &&
+      u.longitud_usuario === user.longitud_usuario
+    );
+    if (index !== -1) {
+      usuarios.splice(index, 1);
+      localStorage.setItem('usuarios', JSON.stringify(usuarios));
+    }
+    localStorage.removeItem('usuario');
+    if (typeof cargarPaginas === "function") {
+      cargarPaginas('verPerfiles');
+    } else {
+      window.location.href = 'verPerfiles.html';
+    }
+  }
+}
+
+function guardarFotoPerfil() {
+    var img = document.getElementById('foto_perfil');
+    var usuarios = JSON.parse(localStorage.getItem('usuarios')) || [];
+    var usuario = JSON.parse(localStorage.getItem('usuario')) || {};
+
+    // Actualiza la foto en el usuario actual
+    usuario.foto_usuario = img.src;
+
+    // Actualiza el usuario en el array de usuarios (último)
+    if (usuarios.length > 0) {
+        usuarios[usuarios.length - 1] = usuario;
+        localStorage.setItem('usuarios', JSON.stringify(usuarios));
+    }
+    // Actualiza el usuario individual
+    localStorage.setItem('usuario', JSON.stringify(usuario));
+
+    // Redirige a verPerfiles
+    if (typeof cargarPaginas === "function") {
+        cargarPaginas('verPerfiles');
+    } else {
+        window.location.href = 'verPerfiles.html';
+    }
+}
+
+function guardarPerfilSinFoto() {
+    var nombre = document.getElementById('txt_nombre').value;
+    var apellido = document.getElementById('txt_apellido').value;
+    var cedula = document.getElementById('txt_cedula').value;
+    var iduni = document.getElementById('txt_iduni').value;
+    var nacimiento = document.getElementById('txt_nacimiento').value;
+    var genero = document.getElementById('txt_genero').value;
+    var email = document.getElementById('txt_email').value;
+    var telefono = document.getElementById('txt_telefono').value;
+    var departamento = document.getElementById('txt_departamento').value;
+    var semestre = document.getElementById('txt_semestre').value;
+    var certificado = document.getElementById('disponible_proyectos').checked;
+    var latitud = document.getElementById('latitud').value;
+    var longitud = document.getElementById('longitud').value;
+
+    var datos_usuario = {
+        nombre_usuario : nombre,
+        apellido_usuario : apellido,
+        cedula_usuario : cedula,
+        iduni_usuario : iduni,
+        nacimiento_usuario : nacimiento,
+        genero_usuario : genero,
+        email_usuario : email,
+        telefono_usuario : telefono,
+        departamento_usuario : departamento,
+        semestre_usuario : semestre,
+        certificado_usuario : certificado,
+        latitud_usuario : latitud,
+        longitud_usuario : longitud,
+        foto_usuario: "" // Vacío por ahora
+    };
+
+    // Guardar en array de usuarios
+    var usuarios = JSON.parse(localStorage.getItem('usuarios')) || [];
+    usuarios.push(datos_usuario);
+    localStorage.setItem('usuarios', JSON.stringify(usuarios));
+
+    // Guardar el último usuario individualmente
+    localStorage.setItem('usuario', JSON.stringify(datos_usuario));
+
+    alert('Datos del Usuario almacenados exitosamente');
+    cargarPaginas('verPerfil');
+}
+
+
+
+function guardarEstadoAnimo() {
+    var estado = document.getElementById('estadoAnimo').value;
+    var usuario = JSON.parse(localStorage.getItem('usuario')) || {};
+
+    // Guarda el estado de ánimo en el usuario actual
+    usuario.estado_animo = estado;
+    localStorage.setItem('usuario', JSON.stringify(usuario));
+
+    alert('Estado de ánimo guardado exitosamente');
+    // Aquí puedes agregar la lógica para mostrar el estado de ánimo en la interfaz, si es necesario
+}
+
+if (typeof mostrarFechaHoraActual === "function") {
+    mostrarFechaHoraActual('fechaHoraPerfil');
+}
+
+window.inicializarVistaPerfil && window.inicializarVistaPerfil();
+</script>
+
+<style>
+#fechaHoraPerfil {
+  font-size: 1.2rem;
+  color: #0d6efd;
+  background: rgba(255,255,255,0.7);
+  border-radius: 8px;
+  display: inline-block;
+  padding: 0.5em 1.2em;
+  margin-bottom: 1em;
+  letter-spacing: 1px;
+}
+.spa-content-fix {
+    margin-top: 80px; /* Ajusta según la altura real de tu navbar */
+  }
+</style>
