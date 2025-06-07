@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Página de Inicio</title>
+    <link rel="stylesheet" href="./public/css/page_index.css">
+    <link rel="stylesheet" href="./public/bootstrap-5.3.5-dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <style>
+        /* Caja de búsqueda centrada con position relative */
+        .form-control {
+            position: relative;        /* Para poder posicionar los íconos dentro */
+            width: 50%;                /* Ancho de la caja de búsqueda */
+            margin: 0 auto;            /* Centrado horizontal */
+            display: block;            /* Para que el margen funcione */
+            margin-top: 20%;           /* Espacio desde el logo */
+        }
+    </style>
+</head>
+<body>
+
+<!-- Logo de la página -->
+<picture class="logo">
+    <img src="./public/img/logo.png" alt="Logo de la página">
+</picture>
+
+<!-- Caja de búsqueda -->
+<div class="mb-3">
+    <input type="text" class="form-control" placeholder="Escribe aquí tu búsqueda">
+</div>
+
+<!-- Botón de "Buscar" -->
+<button type="button" class="btnBuscar">Buscar</button>
+
+<!-- Botón de "Voy a tener suerte" -->
+<button type="button" class="btnSuerte">Voy a tener suerte</button>
+
+<!-- Botón para personalizar la página -->
+<div>
+    <button class="btn_personalizar_pagina"> ✏️ Personaliza tu pagina</button>
+</div>
+
+<!-- Íconos dentro del input (lupa, cámara y micrófono) -->
+<span class="input-group-text-lupa"><i class="fas fa-search"></i></span>        
+<span class="input-group-text-camera"><i class="fas fa-camera"></i></span>
+<span class="input-group-text-micro"><i class="fas fa-microphone"></i></span>
+
+<div style="height: 800px; visibility: hidden;"></div>
+
+<script src="./public/bootstrap-5.3.5-dist/js/bootstrap.min.js"></script>
+</body>
+</html>

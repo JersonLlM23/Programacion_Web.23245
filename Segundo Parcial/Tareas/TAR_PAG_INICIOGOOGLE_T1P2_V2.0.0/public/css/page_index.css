@@ -1,0 +1,105 @@
+/* Fondo con imagen, cubriendo toda la pantalla */
+        body {
+            background-image: url("../img/fondo.jpeg");
+            background-size: cover;
+        }
+
+        /* Logo centrado arriba usando position absolute */
+        img {
+            position: absolute;        /* Se posiciona respecto al <body> */
+            width: 40%;                /* Ancho del logo */
+            height: auto;              /* Mantiene la proporción del logo */
+            top: 10%;                  /* Desde arriba */
+            left: 30%;                 /* Desde la izquierda */
+        }
+
+        /* Botón de Buscar con position absolute */
+        .btnBuscar {
+            position: absolute;           /* Se posiciona respecto al <body> */
+            top: 55%;          /* Desde arriba */
+            left: 32%;        /* Desde la izquierda */
+            width: 10%;           /* Ancho del botón */
+            height: 40px;          /* Altura del botón */
+            background-color: rgb(181, 219, 219); /* Color de fondo del botón */
+            color: black;           /* Color del texto */
+            font-weight: bold; /* Negrita para el texto */
+            border: none;        /* Sin borde */
+            border-radius: 10px; /* Bordes redondeados */
+            cursor: pointer;    /* Cambia el cursor al pasar por encima */
+            box-shadow: 0px 5px 1px rgba(0, 0, 0, 0.5); /* Sombra para el botón */
+            font-size: medium; /* Tamaño de fuente medio */
+            display: flex;          /* Flexbox para centrar el texto */
+            align-items: center; /* Centrado vertical */
+            justify-content: center; /* Centrado horizontal */
+            padding: 0;       /* Sin padding para que ocupe todo el espacio */
+        }
+
+        /* Botón de "Voy a tener suerte" también con position absolute */
+        .btnSuerte {
+            position: absolute;           /* Se posiciona respecto al <body> */
+            top: 55%;          /* Desde arriba */
+            left: 50%;       /* Desde la izquierda */
+            width: 20%;          /* Ancho del botón */
+            height: 40px;         /* Altura del botón */
+            background-color: rgb(181, 219, 219); /* Color de fondo del botón */
+            color: black;       /* Color del texto */
+            font-weight: bold; /* Negrita para el texto */
+            border: none;       /* Sin borde */
+            border-radius: 10px; /* Bordes redondeados */
+            cursor: pointer;   /* Cambia el cursor al pasar por encima */
+            box-shadow: 0px 5px 1px rgba(0, 0, 0, 0.5); /* Sombra para el botón */
+            font-size: medium; /* Tamaño de fuente medio */
+            display: flex;         /* Flexbox para centrar el texto */
+            align-items: center; /* Centrado vertical */
+            justify-content: center; /* Centrado horizontal */
+            padding: 0;      /* Sin padding para que ocupe todo el espacio */
+        }
+
+        /* Ícono de lupa (posición absoluta dentro del input) */
+        .input-group-text-lupa {
+            position: absolute; /* Posición absoluta para el ícono de lupa */
+            top: 43.5%;    /* Desde arriba */
+            left: 67%;     /* Desde la izquierda */
+            background-color: transparent; /* Fondo transparente */
+            border: none; /* Sin borde */
+            padding: 0;       /* Sin padding */
+            margin-right: 10px;  /* Espacio a la derecha */
+        }
+
+        /* Ícono de cámara */
+        .input-group-text-camera {
+            position: absolute; /* Posición absoluta para el ícono de cámara */
+            top: 43.5%;     /* Desde arriba */
+            left: 70%;      /* Desde la izquierda */
+            background-color: transparent;  /* Fondo transparente */
+            border: none;   /* Sin borde */
+            padding: 0;        /* Sin padding */
+            margin-right: 10px;   /* Espacio a la derecha */
+        }
+
+        /* Ícono de micrófono */
+        .input-group-text-micro {
+            position: absolute; /* Posición absoluta para el ícono de micrófono */
+            top: 43.5%;         /* Desde arriba */
+            left: 73%;          /* Desde la izquierda */
+            background-color: transparent; /* Fondo transparente */
+            border: none;       /* Sin borde */
+            padding: 0;         /* Sin padding */
+            margin-right: 10px; /* Espacio a la derecha */
+        }
+
+        /* Botón fijo en la esquina inferior derecha */
+        .btn_personalizar_pagina {
+            position: fixed;            /* Siempre visible en la pantalla */
+            bottom: 10px;           /* Espacio desde el borde inferior */
+            right: 20px;            /* Espacio desde el borde derecho */
+            background-color: rgb(181, 219, 219); /* Color de fondo del botón */
+            font-weight: bold; /* Negrita para el texto */
+            color: black; /* Color del texto */
+            padding: 10px 10px; /* Espaciado interno */
+            border: none; /* Sin borde */
+            border-radius: 25px; /* Bordes redondeados */
+            cursor: pointer; /* Cambia el cursor al pasar por encima */
+            box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.5); /* Sombra para el botón */
+            font-size: small; /* Tamaño de fuente pequeño */
+        }
