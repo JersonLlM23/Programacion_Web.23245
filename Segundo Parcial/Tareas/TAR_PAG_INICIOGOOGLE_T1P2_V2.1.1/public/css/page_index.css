@@ -13,6 +13,27 @@
             left: 30%;                 /* Desde la izquierda */
         }
 
+        /* Input de búsqueda centrado con position absolute */
+        .gmail {
+            position: absolute;        /* Se posiciona respecto al <body> */
+            top: 31px;                 /* Desde arriba */
+            right: 5px;               /* Desde la derecha */
+            width: 150px;              /* Ancho del logo de Gmail */
+            height: auto;              /* Mantiene la proporción del logo */
+            color:white;              /* Color del texto */
+            font-weight: bold;         /* Negrita para el texto */
+        }
+    
+        
+        .foto-perfil{
+            position: absolute;        /* Se posiciona respecto al <body> */
+            top: 10px;                 /* Desde arriba */
+            right: 10px;                 /* Desde la derecha */
+            width: 110px;               /* Ancho de la foto de perfil */
+            height: 110px;              /* Altura de la foto de perfil */
+            border-radius: 50%;        /* Bordes redondeados para hacerla circular */
+        }
+
         /* Botón de Buscar con position absolute */
         .btnBuscar {
             position: absolute;           /* Se posiciona respecto al <body> */
@@ -91,7 +112,7 @@
         /* Botón fijo en la esquina inferior derecha */
         .btn_personalizar_pagina {
             position: fixed;            /* Siempre visible en la pantalla */
-            bottom: 10px;           /* Espacio desde el borde inferior */
+            bottom: 80px;           /* Espacio desde el borde inferior */
             right: 20px;            /* Espacio desde el borde derecho */
             background-color: rgb(181, 219, 219); /* Color de fondo del botón */
             font-weight: bold; /* Negrita para el texto */
@@ -103,3 +124,15 @@
             box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.5); /* Sombra para el botón */
             font-size: small; /* Tamaño de fuente pequeño */
         }
+
+        .footer {
+            position: fixed; /* Fijo en la parte inferior */
+            bottom: 0; /* Desde el fondo */
+            left: 0; /* Desde la izquierda */
+            width: 100%; /* Ancho completo */
+            background-color: rgba(255, 255, 255, 0.4); /* Fondo blanco con opacidad */
+            text-align: center; /* Centrado del texto */
+            padding: 10px; /* Espaciado interno */
+            font-size: small; /* Tamaño de fuente pequeño */
+        }
+
