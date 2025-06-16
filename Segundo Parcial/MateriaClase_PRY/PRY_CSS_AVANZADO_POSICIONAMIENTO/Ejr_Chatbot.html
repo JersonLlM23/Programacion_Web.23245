@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./public/bootstrap-5.3.5-dist/css/bootstrap.min.css">
+    <title>Botón Personalizar</title>
+
+    <style>
+        body {
+            background-color: bisque;
+        }
+
+        .btn-chat {
+            position:fixed;
+            bottom: 10px;
+            left: 20px;
+            background-color: whitesmoke;
+            color: black;
+            padding: 10px 10px; 
+            border: none;
+            border-radius: 50px;
+            box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.5);
+            font-size: small;
+        }
+
+
+        .modal-dialog {
+        position: fixed;
+        bottom: 60px;
+        left: 20px;
+        margin: 0;
+        width: 300px; /* Fija el ancho del modal */
+        max-width: 90vw;
+        }
+
+        .modal-content {
+        background-color: rgb(16, 142, 180); /* Color solo al contenido */
+        }
+
+    </style>
+
+</head>
+<body>
+
+    
+<!-- Button trigger modal -->
+<button type="button" class="btn btn-chat btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+  Clic aqui para chatbot
+</button>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">¿Necesitas Ayuda?</h1>
+        
+        
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <textarea class="form-control mb-2" rows="3" placeholder="Escribe tu mensaje aquí..."></textarea>
+        <button type="button" class="btn btn-primary w-100">Enviar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="./public/bootstrap-5.3.5-dist/js/bootstrap.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,46 @@
+header, footer {
+    background-color: blueviolet;
+    color: white;
+    text-align: center ;
+    font-weight: bold;
+    padding: 5px;
+}
+
+.contenido1{
+    background-color: brown;;
+}
+
+.contenido2{
+    background-color: green;
+}
+
+
+/* Configurar nuestro Main */
+
+main{
+    display: flex;  /* Permite que los hijos se alineen en una fila */
+    flex-direction: column; /* Los hijos se alinean en una columna */
+}
+
+.columnas{
+    padding: 20px;
+    border: 2px;
+}
+
+/* Configurar media para desktop */
+
+@media (max-width: 520px) {  /* max-width: hará dos columnas */ 
+    body{
+        background-color: black;
+    }
+
+    main{
+        flex-direction: row; /* Los hijos se alinean en una fila */
+    }
+
+    .columnas{
+        width: 50%; /* Cada columna ocupa el 50% del ancho */
+    }
+
+    
+}

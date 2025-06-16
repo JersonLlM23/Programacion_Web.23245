@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS POSICIONAMIENTO</title>
+
+    <style>
+
+        div{
+            background-color: aqua;
+        }
+
+        .caja_saludo_static{
+            position: static;
+        }
+
+        .caja_saludo_relative{
+            position:relative; top:20px; left:20px;
+        }
+
+        .caja_saludo_absolute{
+            position:absolute; top:20px; left:500px;
+            background-color: lightcoral;
+        }
+
+        .caja_saludo_fixed{
+            position:fixed; top:2px; left:500px;
+        }
+
+        .caja_saludo_sticky{
+            position:sticky; top:2; left:24;
+        }
+    </style>
+
+</head>
+<body>
+    
+    <div class="caja_saludo_static">
+    <h1>Holi estático</h1>
+    <p> Las otras propiedades no le cambiarán. Si ponemos top o left no servirá</p>
+    <p> Se coloca al inicio de la página</p>
+    </div>
+
+    <div class="caja_saludo_relative">
+    <h1>Holi relative</h1>
+    <p>Se posiciona en relación a su posición original. Si le ponemos top o left se moverá</p>
+    </div>
+
+    <div class="caja_saludo_absolute">
+    <h1>Holi absolute</h1>
+    <p>Se posiciona en relación al elemento padre más cercano que tenga posición relativa</p>
+
+    <div class="caja_salido_fixed">
+        <h1>Holi fixed</h1>
+        <p> Fixed se queda estático</p>
+    </div>
+
+    <div class="caja_saludo_sticky">
+        <h1> Holi Sticky</h1>
+    </div>
+</body>
+</html>

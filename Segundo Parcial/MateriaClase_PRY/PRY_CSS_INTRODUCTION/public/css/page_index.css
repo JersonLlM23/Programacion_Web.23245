@@ -1,0 +1,12 @@
+/* Seleccionado a mi elemento body para poner color de fondo, etc */
+body {
+    background-color: blue;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+h1{
+    color: navajowhite;
+    text-align: center;
+    font-size: 2.5em;
+    margin-top: 20px;
+}

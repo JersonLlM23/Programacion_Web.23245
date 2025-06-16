@@ -1,0 +1,44 @@
+header{
+    background-color:rgb(5, 5, 83);
+    color:white;
+    text-align: center;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-weight: bold;
+
+}
+
+.menu_principal{
+    display: flex;
+    flex-direction: column;
+    background-color: green;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+
+}
+
+.menu_principal a{
+    color: white;
+    padding: 5px;
+    text-decoration: none; /*  Remove underline from links */
+    border-bottom: 1px solid white; /* Add a bottom border to links */
+}
+
+.menu_principal a:hover{
+    background-color: rgb(167, 143, 40); /* Change background color on hover */
+    font-weight: bold; /* Make text bold on hover */
+    color: black; /* Change text color on hover */
+    font-size: large; /* Increase font size on hover */
+}
+
+/* Media querty = if */
+@media (min-width:520px){
+    .menu_principal{
+        flex-direction: row;
+        background-color: rgb(0, 129, 86);
+        justify-content: center;
+    }
+
+    .menu_principal a{
+        border-bottom: none; /* Remove bottom border for horizontal layout */
+        border-right: 1px solid white; /* Add right border for horizontal layout */
+    }
+}
