@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../public/bootstrap-5.3.5-dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../public/css/styles.css">
+    <link rel="icon" href="../public/sources/img/icono.png" type="image/x-icon">
+</head>
+<body id="Fondo_pagina">
+<style>
+    #map { height: 350px; }
+  </style>
+  
+<div style="background: url('sources/img/fondo.jpg'); background-size: cover; min-height: 100vh;"> 
+<header class="text-center" style="height: 30px;"></header>
+
+<div class="container mt-5">
+<form id="formPerfil" autocomplete="off" onsubmit="validarFormularioCompleto(event)">
+  <div class="row">
+    <h3 id="perfilAS"><strong>Perfil Astronómico</strong></h3>
+    <div class="col-12 col-md-4 mb-4">
+      <div class="card">
+        <div class="card-body">
+
+          <p><strong>Información personal del observatorio</strong></p>
+          <div class="py-2">
+            <label for="nombreCorto"><strong>Primer nombre:</strong></label>
+            <h6 class="text-muted">* Debe ser un Texto corto</h6>
+            <input type="text" id="nombreCorto" class="form-control" placeholder="Ingrese su primer nombre" oninput="validarNombreCorto(this)">
+            <div id="mensajeNombre" class="text-info"></div>
+          </div>
+
+        <div class="py-2">
+            <label for="correoInstitucional"><strong>Correo institucional:</strong></label>
+            <h6 class="text-muted">* Debe contener @espe.edu.ec</h6>
+            <input type="email" id="correoInstitucional" class="form-control" placeholder="correo@espe.edu.ec"
+                   onblur="validarCorreoObservatorio(this)" >
+            <div id="mensajeCorreo" class="text-info"></div>
+          </div>
+     
+          <div class="py-2">
+            <label for="edad"><strong>Edad:</strong></label>
+            <h6 class="text-muted">* Edad mínima 20</h6>
+            <input type="number" id="edad" class="form-control" placeholder="Edad" min="10" max="65"
+                   onchange="clasificarAstronomo(this)">
+            <div id="mensajeEdad" class="text-info"></div>
+          </div>
+          
+          <div class="py-2">
+            <label for="contrasena"><strong>Contraseña del sistema:</strong></label>
+            <h6 class="text-muted">* Más de 5 caracteres</h6>
+            <input type="password" id="contrasena" class="form-control" placeholder="Contraseña"
+                   onkeyup="validarContrasenaSegura(this)" >
+            <div id="mensajeContrasena" class="text-warning"></div>
+          </div>
+
+          <!-- 5. Fecha de ingreso al observatorio -->
+          <div class="py-2">
+            <label for="fechaIngreso"><strong>Fecha de ingreso al observatorio:</strong></label>
+            <h6 class="text-muted">* Ingrese su fecha de registro</h6>
+            <input type="date" id="fechaIngreso" class="form-control"
+                   onchange="calcularAniosObservatorio(this)">
+            <div id="mensajeFecha" class="text-info"></div>
+          </div>
+
+          <!-- 6. Hora favorita para observar estrellas -->
+          <div class="py-2">
+            <label for="horaObservacion"><strong>Hora favorita para observar estrellas:</strong></label>
+            <h6 class="text-muted">* Dependerá de la hora para la visualización correcta</h6>
+            <input type="time" id="horaObservacion" class="form-control"
+                   onblur="validarHoraObservacion(this)">
+            <div id="mensajeHora" class="text-info"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Columna 2 -->
+    <div class="col-12 col-md-4 mb-4">
+      <div class="card">
+        <div class="card-body">
+          <h3 class="invisible">.</h3>
+          <p><strong>Credenciales y experiencia</strong></p>
+
+          <!-- 7. Subir credenciales -->
+          <div class="py-2">
+            <label for="credenciales"><strong>Subir credenciales (PDF o imagen):</strong></label>
+            <h6 class="text-muted">* Solo formato imagen</h6>
+            <input type="file" id="credenciales" class="form-control" accept=".jpg,.jpeg,.png"
+                   onchange="mostrarNombreArchivo(this)" >
+            <div id="mensajeArchivo" class="text-info"></div>
+          </div>
+
+          <!-- 8. Nivel de experiencia astronómica -->
+          <div class="py-2">
+            <label for="experiencia"><strong>Nivel de experiencia astronómica (0-100):</strong></label>
+            <h6 class="text-muted">* Tendrán más prioridad los que tengan más experiencia</h6>
+            <input type="range" id="experiencia" class="form-range" min="0" max="100" value="50"
+                   oninput="cambiarColorExperiencia(this)" onchange="mostrarNivelExperiencia(this)">
+            <div id="valorExperiencia" class="text-center">50</div>
+            <div id="mensajeExperiencia" class="text-info"></div>
+          </div>
+
+          <!-- 9. Color preferido del telescopio -->
+          <div class="py-2">
+            <label for="colorTelescopio"><strong>Color preferido del telescopio:</strong></label>
+            <h6 class="text-muted">* Se le asignará un telescopio del color elegido</h6>
+            <input type="color" id="colorTelescopio" class="form-control form-control-color" value="#ffffff"
+                   onchange="cambiarColorIlustracion(this)">
+            <div id="ilustracionTelescopio" class="border rounded p-3 mt-2">
+              🔭 Telescopio personalizado
+            </div>
+          </div>
+
+          <!-- 10. Número de contacto -->
+          <div class="py-2">
+            <label for="telefono"><strong>Número de contacto:</strong></label>
+                    <h6 class="text-muted">* Teléfono personal</h6>
+            <input type="tel" id="telefono" class="form-control" placeholder="0999999999"
+                   onkeyup="validarSoloNumeros(this)" oninput="validarLongitudTelefono(this)">
+            <div id="mensajeTelefono" class="text-warning"></div>
+          </div>
+
+          <!-- 11. Página web o red científica -->
+          <div class="py-2">
+            <label for="paginaWeb"><strong>Página web o red científica:</strong></label>
+            <h6 class="text-muted">* Debe ser un enlace válido</h6>
+            <input type="url" id="paginaWeb" class="form-control" placeholder="https://ejemplo.com"
+                   onblur="mostrarPreviewLink(this)">
+            <div id="mensajeWeb" class="text-info"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Columna 3 -->
+    <div class="col-12 col-md-4 mb-4">
+      <div class="card">
+        <div class="card-body">
+          <h3 class="invisible">.</h3>
+          <p><strong>Preferencias e información adicional</strong></p>
+
+          <!-- 12. Áreas de interés -->
+          <div class="py-2">
+            <label><strong>Áreas de interés:</strong></label>
+            <h6 class="text-muted">* Selecciona las áreas de tu interés</h6>
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" id="astrofisica" value="Astrofísica" onchange="mostrarInfoArea(this)">
+              <label class="form-check-label" for="astrofisica">Astrofísica</label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" id="exoplanetas" value="Exoplanetas" onchange="mostrarInfoArea(this)">
+              <label class="form-check-label" for="exoplanetas">Exoplanetas</label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" id="cosmologia" value="Cosmología" onchange="mostrarInfoArea(this)">
+              <label class="form-check-label" for="cosmologia">Cosmología</label>
+            </div>
+            <div id="infoAreas" class="text-info mt-2"></div>
+          </div>
+
+          <!-- 13. Rango en el observatorio -->
+          <div class="py-2">
+            <label><strong>Rango en el observatorio:</strong></label>
+            <h6 class="text-muted">* Selecciona tu rol en el observatorio</h6>
+            <div class="form-check">
+              <input class="form-check-input" type="radio" name="rango" id="investigador" value="Investigador" onclick="mostrarDescripcionRol(this)">
+              <label class="form-check-label" for="investigador">Investigador</label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input" type="radio" name="rango" id="tecnico" value="Técnico" onclick="mostrarDescripcionRol(this)">
+              <label class="form-check-label" for="tecnico">Técnico</label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input" type="radio" name="rango" id="becario" value="Becario" onclick="mostrarDescripcionRol(this)">
+              <label class="form-check-label" for="becario">Becario</label>
+            </div>
+            <div id="descripcionRol" class="text-info mt-2"></div>
+          </div>
+
+          <!-- 14. Universo favorito -->
+          <div class="py-2">
+            <label for="universoFavorito"><strong>Galaxia favorita:</strong></label>
+            <h6 class="text-muted">* Selecciona una galaxia</h6>
+            <select id="universoFavorito" class="form-select" onchange="cambiarInfoUniverso(this)">
+              <option value="">Selecciona una galaxia</option>
+              <option value="Via Lactea">Vía Láctea</option>
+              <option value="Andromeda">Andrómeda</option>
+              <option value="Sombrero">Sombrero</option>
+            </select>
+            <div id="infoUniverso" class="text-info mt-2"></div>
+          </div>
+
+          <!-- 15. Biografía científica -->
+          <div class="py-2">
+            <label for="biografia"><strong>Biografía científica:</strong></label>
+            <h6 class="text-muted">* Describe tu trayectoria científica</h6>
+            <textarea id="biografia" class="form-control" rows="4" placeholder="Describe tu trayectoria científica..."
+                      onfocus="mostrarContadorCaracteres(this)" onblur="validarBiografiaVacia(this)" oninput="actualizarContador(this)"></textarea>
+            <div id="contadorCaracteres" class="text-muted"></div>
+            <div id="mensajeBiografia" class="text-info"></div>
+          </div>
+
+          <!-- Botones -->
+          <div class="py-2">
+            <button type="button" class="btn btn-info w-100 mb-2" onclick="analizarPerfil()">Analizar perfil</button>
+            <button type="submit" class="btn btn-primary w-100" onmouseover="cambiarColorBoton(this)" onmouseout="restaurarColorBoton(this)">Enviar</button>
+          </div>
+          <div id="mensajeAnalisis" class="text-success mt-2"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</form>
+ 
+</div>
+
+<div class="text-center mt-4">
+<a href="../index.html" class="btn btn-secondary me-2">🏠 Regresar</a>
+<a href="acercade.html" class="btn btn-success">ℹ️ Acerca de</a>
+</div>
+    
+<script src="../public/bootstrap-5.3.5-dist/js/bootstrap.min.js"></script>
+<script src="../public/js/scripts.js"></script>    
+</body>
+</html>
