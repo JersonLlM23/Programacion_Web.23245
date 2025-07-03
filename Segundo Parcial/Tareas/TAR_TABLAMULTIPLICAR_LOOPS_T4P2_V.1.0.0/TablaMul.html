@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora de multiplicación</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ion-rangeslider/2.3.1/css/ion.rangeSlider.min.css"/>
+    <link rel="stylesheet" href="./public/lib/bootstrap-5.3.5-dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="./public/css/estilos.css">
+    <link rel="icon" href="./public/sources/img/doraemon.png" type="image/x-icon">
+
+</head>
+<body class="py-5" id="body1">
+ 
+<div class="card shadow-lg p-3 mb-5 bg-body-tertiary rounded">
+        <div class="card-header ">
+            <h1 class="text-center fw-bold" id="titulo1">Tabla de Multiplicar</h1>
+     
+<div class="card shadow-lg p-3 mb-5 bg-body-tertiary rounded">
+        <div class="card-header ">
+            <h3 class="text-center fw-bold">Utilizando loop: FOR</h3>            
+        </div>        
+       
+    <div class="alert alert-info">
+        <strong>Código del loop FOR:</strong>
+        <pre><code>for (let i = v_i_for; i <= v_f_for; i++) {
+    let item = document.createElement("li");
+    item.innerHTML = i + "x" + numero_tabla_for + " = " + (i * numero_tabla_for);
+    ul_rango_for.appendChild(item);
+}</code></pre>
+    </div>
+
+    <label for="txt_numero_inicio_for">Ingrese multiplicador:</label>
+    <input
+        type="number"
+        class="form-control mb-3"
+        id="txt_numero_inicio_for"
+        onkeyup="cambiarnumeroTablaFor(this)"
+    >
+<br>
+
+<label for="range_slider_for">Selecciona un rango:</label>
+<input type="text" id="range_slider_for" class="js-range-slider-for" name="my_range_for" value="" placeholder="Seleccione un valor" title="Seleccione un valor" />
+
+<h3>Número de Inicio:</h3><br>
+<h4 class="fw-bold" id="numero_inicio_txt_for">  </h4>
+<h3>Número de Fin:</h3><br>
+<h4 class="fw-bold" id="numero_fin_txt_for">  </h4>
+
+<ul id="ul_rango_for"></ul>
+
+
+</div>
+<div class="card shadow-lg p-3 mb-5 bg-body-tertiary rounded">
+        <div class="card-header ">
+            <h3 class="text-center fw-bold">Utilizando loop: WHILE</h3>            
+        </div>        
+       
+    <div class="alert alert-warning">
+        <strong>Código del loop WHILE:</strong>
+        <pre><code>let i = v_i_while;
+while (i <= v_f_while) {
+    let item = document.createElement("li");
+    item.innerHTML = i + "x" + numero_tabla_while + " = " + (i * numero_tabla_while);
+    ul_rango_while.appendChild(item);
+    i++;
+}</code></pre>
+    </div>
+
+    <label for="txt_numero_inicio_while">Ingrese multiplicador:</label>
+    <input
+        type="number"
+        class="form-control mb-3"
+        id="txt_numero_inicio_while"
+        onkeyup="cambiarnumeroTablaWhile(this)"
+    >
+<br>
+
+<label for="range_slider_while">Selecciona un rango:</label>
+<input type="text" id="range_slider_while" class="js-range-slider-while" name="my_range_while" value="" placeholder="Seleccione un valor" title="Seleccione un valor" />
+
+<h3>Número de Inicio:</h3><br>
+<h4 class="fw-bold" id="numero_inicio_txt_while">  </h4>
+<h3>Número de Fin:</h3><br>
+<h4 class="fw-bold" id="numero_fin_txt_while">  </h4>
+
+<ul id="ul_rango_while"></ul>
+
+</div>
+
+
+<div class="card shadow-lg p-3 mb-5 bg-body-tertiary rounded">
+        <div class="card-header ">
+            <h3 class="text-center fw-bold">Utilizando loop: DO-WHILE</h3>            
+        </div>        
+       
+    <div class="alert alert-success">
+        <strong>Código del loop DO-WHILE:</strong>
+        <pre><code>let i = v_i_dowhile;
+do {
+    let item = document.createElement("li");
+    item.innerHTML = i + "x" + numero_tabla_dowhile + " = " + (i * numero_tabla_dowhile);
+    ul_rango_dowhile.appendChild(item);
+    i++;
+} while (i <= v_f_dowhile);</code></pre>
+    </div>
+
+    <label for="txt_numero_inicio_dowhile">Ingrese multiplicador:</label>
+    <input
+        type="number"
+        class="form-control mb-3"
+        id="txt_numero_inicio_dowhile"
+        onkeyup="cambiarnumeroTablaDoWhile(this)"
+    >
+<br>
+
+<label for="range_slider_dowhile">Selecciona un rango:</label>
+<input type="text" id="range_slider_dowhile" class="js-range-slider-dowhile" name="my_range_dowhile" value="" placeholder="Seleccione un valor" title="Seleccione un valor" />
+
+<h3>Número de Inicio:</h3><br>
+<h4 class="fw-bold" id="numero_inicio_txt_dowhile">  </h4>
+<h3>Número de Fin:</h3><br>
+<h4 class="fw-bold" id="numero_fin_txt_dowhile">  </h4>
+
+<ul id="ul_rango_dowhile"></ul>
+
+
+</div>
+
+<a href="./public/pages/acercade.html" class="btn btn-success btn-fixed">ℹ️ Acerca de</a>
+
+<!--jQuery primero-->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>    
+<!--Plugin JavaScript file-->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/ion-rangeslider/2.3.1/js/ion.rangeSlider.min.js"></script>
+<!--Tu código JavaScript-->
+<script src="./public/js/ciclo_for.js"></script>
+<script src="./public/js/ciclo_while.js"></script>
+<script src="./public/js/ciclo_dowhile.js"></script>
+<script src="./public/lib/bootstrap-5.3.5-dist/js/bootstrap.min.js" ></script>
+</body>
+</html>
